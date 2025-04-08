@@ -1,45 +1,48 @@
-# ROR Data Converter
+# Invenio Controlled Vocabulary Converter
 
-Converts ROR JSON data files to Invenio YAML format.
+Converts JSON data dumps into Invenio YAML format for multiple controlled vocabularies.
 
 ## Installation
 
-1. Install Rust: https://rustup.rs/
-2. Clone repository
-3. Build:
+- Install Rust.
+
+- Clone the repository.
+
+- Build with:
+
 ```bash
 cargo build --release
 ```
 
-4. Run:
-```bash
-invenio-vocb-converter <INPUT_JSON> <OUTPUT_YAML>
-```
-
-## Arguments
-
-| Parameter    | Description                          | Example                     |
-|--------------|--------------------------------------|-----------------------------|
-| INPUT_JSON   | Path to ROR JSON input file         | ./data/ror-data.json       |
-| OUTPUT_YAML  | Path for generated YAML output file  | ./output/affiliations.yaml  |
-
-
-Example
+## Usage
 
 ```bash
-./target/release/invenio-vocb-converter /v1.63-2025-04-03-ror-data/v1.63-2025-04-03-ror-data.json rust-vocab.yaml
+./target/release/invenio-vocb-converter <VOCAB_TYPE> <INPUT_JSON> <OUTPUT_YAML>
 ```
 
-**Error Handling:**
+VOCAB_TYPE: One of: `affiliations`, `names`, `funding`, `awards`, or `subjects`.
 
-The program will show appropriate errors for:
-- Missing arguments
-- Invalid file paths
-- JSON parsing errors
-- YAML serialization errors
-- File permission issues
+INPUT_JSON: Path to the JSON input file.
 
-The code now properly validates arguments and provides clear error messages while maintaining all the original conversion functionality in a more Rust-idiomatic way.
+OUTPUT_YAML: Path for the generated YAML output.
+
+
+
+## Example
+
+```bash
+./target/release/invenio-vocb-converter affiliations data/ror-data.json output/affiliations.yaml
+```
+
+## Error Handling
+The converter validates arguments and reports errors for:
+
+Missing or invalid parameters
+
+File access issues
+
+JSON parsing or YAML serialization errors
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Licensed under the MIT License. See LICENSE for details.
+```
