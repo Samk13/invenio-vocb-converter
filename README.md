@@ -1,6 +1,6 @@
 # ROR Data Converter
 
-Converts ROR JSON data files to YAML format.
+Converts ROR JSON data files to Invenio YAML format.
 
 ## Installation
 
@@ -13,7 +13,7 @@ cargo build --release
 
 4. Run:
 ```bash
-cargo run --release -- <INPUT_JSON> <OUTPUT_YAML>
+invenio-vocb-converter <INPUT_JSON> <OUTPUT_YAML>
 ```
 
 ## Arguments
@@ -27,7 +27,7 @@ cargo run --release -- <INPUT_JSON> <OUTPUT_YAML>
 Example
 
 ```bash
-cargo run --release -- ./data/ror-data.json ./output/affiliations.yaml
+./target/release/invenio-vocb-converter /v1.63-2025-04-03-ror-data/v1.63-2025-04-03-ror-data.json rust-vocab.yaml
 ```
 
 **Error Handling:**
